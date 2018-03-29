@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="brucehandy">
+    
+    <meta name="description" content="brucehandy">
+    
+    
+    
+    
+    
+    
+    <title>CentOS 7 安装ffmpeg | brucehandy</title>
+    <link href=”https://brucehandy0.github.io“ rel=”prefetch” />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="https://brucehandy0.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://brucehandy0.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">brucehandy</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/tags">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://brucehandy0.github.io">brucehandy</a>
+        >
+        <span>CentOS 7 安装ffmpeg</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2017/05/29/CentOS 7 安装ffmpeg/">CentOS 7 安装ffmpeg</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/ffmpeg/">ffmpeg</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2017-05-29
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/">CentOS 7 安装ffmpeg</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2017-05-29
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/ffmpeg/">ffmpeg</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>CentOS 7 安装ffmpeg<br>安装EPEL Release，因为安装需要使用其他的repo源，所以需要EPEL支持<br>yum install -y epel-release</p>
+<p>如果出现缺少Code提示，可以：</p>
+<p>sudo rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7</p>
+<p>安装完成之后，可以查看是否安装成功</p>
+<p>yum repolist</p>
+<p>安装Nux-Dextop源<br>导入一个Code<br>sudo rpm –import <a href="http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro" target="_blank" rel="noopener">http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro</a><br>安装nux-dextop 源<br>sudo rpm -Uvh <a href="http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el.nux.noarch.rpm" target="_blank" rel="noopener">http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el.nux.noarch.rpm</a><br>查看repo源是否安装成功<br>yum repolist</p>
+<p>yum安装ffmpeg<br>yum install -y ffmpeg<br>安装完成后检查ffmpeg 版本<br>ffmpeg -version</p>
+<p>CentOS 6和7安装方法是不一样的，下面分别说明：</p>
+<p>安装前都需要先安装epel扩展源</p>
+<p>yum -y install epel-release</p>
+<p>CentOS 6比较简单，安装yum源之后直接安装即可：</p>
+<p>su -c ‘yum localinstall –nogpgcheck <a href="https://download1.rpmfusion.org/free/el/rpmfusion-free-release-6.noarch.rpm" target="_blank" rel="noopener">https://download1.rpmfusion.org/free/el/rpmfusion-free-release-6.noarch.rpm</a> <a href="https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-6.noarch.rpm‘" target="_blank" rel="noopener">https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-6.noarch.rpm‘</a></p>
+<p>yum -y install ffmpeg ffmpeg-devel</p>
+<p>ffmpeg基本命令<br>分离视频音频流</p>
+<p>ffmpeg -i input_file -vcodec copy -an output_file_video　　//分离视频流<br>ffmpeg -i input_file -acodec copy -vn output_file_audio　　//分离音频流</p>
+<p>视频解复用</p>
+<p>ffmpeg –i test.mp4 –vcodec copy –an –f m4v test.264<br>ffmpeg –i test.avi –vcodec copy –an –f m4v test.264</p>
+<p>视频转码</p>
+<p>ffmpeg –i test.mp4 –vcodec h264 –s 352278 –an –f m4v test.264 //转码为码流原始文件<br>ffmpeg –i test.mp4 –vcodec h264 –bf 0 –g 25 –s 352278 –an –f m4v test.264 //转码为码流原始文件<br>ffmpeg –i test.avi -vcodec mpeg4 –vtag xvid –qsame test_xvid.avi //转码为封装文件<br>//-bf B帧数目控制，-g 关键帧间隔控制，-s 分辨率控制</p>
+<p>视频封装</p>
+<p>ffmpeg –i video_file –i audio_file –vcodec copy –acodec copy output_file</p>
+<p>视频剪切</p>
+<p>ffmpeg –i test.avi –r 1 –f image2 image-%3d.jpeg //提取图片<br>ffmpeg -ss 0:1:30 -t 0:0:20 -i input.avi -vcodec copy -acodec copy output.avi //剪切视频</p>
+<p>ffmpeg -ss 0:0:0 -t 0:0:20 -i /var/www/html/2.mp4 -vcodec copy -acodec copy /var/www/html/output.mp4</p>
+<p>//-r 提取图像的频率，-ss 开始时间，-t 持续时间</p>
+<p>视频录制</p>
+<p>ffmpeg –i rtsp://192.168.3.205:5555/test –vcodec copy out.avi</p>
+<p>YUV序列播放</p>
+<p>ffplay -f rawvideo -video_size 1920x1080 input.yuv</p>
+<p>YUV序列转AVI</p>
+<p>ffmpeg –s w*h –pix_fmt yuv420p –i input.yuv –vcodec mpeg4 output.avi</p>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            brucehandy
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>brucehandy</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/">CentOS 7 安装ffmpeg</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/12/05/js中的length/">js中的length</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/10/27/autohotkey 改建/">autohotkey 改建</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/10/09/js简易实现private,public,static和继承/">js简易实现private,public,static和继承</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/10/js常用函数的封装/">js常用函数的封装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/04/win下开机启动软件/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/">CentOS 7 安装ffmpeg</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/06/12/git常用命令/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/10/27/autohotkey 改建/">autohotkey 改建</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/12/29/backbone入门学习/">backbone入门学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/10/js常用函数的封装/">js常用函数的封装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/04/win下开机启动软件/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/10/09/js简易实现private,public,static和继承/">js简易实现private,public,static和继承</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+                <li class="">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                <li class="">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                <li class="">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/ffmpeg/" style="font-size: 13.147791851965371px;" class="tag-cloud-link">ffmpeg</a>
+    
+    <a href="/tags/php/" style="font-size: 13.189206250422842px;" class="tag-cloud-link">php</a>
+    
+    <a href="/tags/git/" style="font-size: 8.962473550524258px;" class="tag-cloud-link">git</a>
+    
+    <a href="/tags/hexo/" style="font-size: 9.268133337137172px;" class="tag-cloud-link">hexo</a>
+    
+    <a href="/tags/java/" style="font-size: 10.752345186748284px;" class="tag-cloud-link">java</a>
+    
+    <a href="/tags/autohotkey/" style="font-size: 12.755906037428451px;" class="tag-cloud-link">autohotkey</a>
+    
+    <a href="/tags/backbone/" style="font-size: 10.370384684307702px;" class="tag-cloud-link">backbone</a>
+    
+    <a href="/tags/bat/" style="font-size: 12.339179833805158px;" class="tag-cloud-link">bat</a>
+    
+    <a href="/tags/公众号/" style="font-size: 15.191486319427899px;" class="tag-cloud-link">公众号</a>
+    
+</div>
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://ryerh.com/" target="_blank">ryerh</a>
+    </li>
+    
+</div>
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/brucehandy0" target="_blank">Github</a>
+    </li>
+    
+</div>
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 brucehandy Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+
+</html>
