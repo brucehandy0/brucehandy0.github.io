@@ -60,24 +60,6 @@
 </section>
     <!-- 欧尼酱功能, 谁用谁知道 -->
     
-    <div class="gal-menu gal-dropdown">
-    <div class="circle" id="gal">
-        <div class="ring">
-            <a href="https://brucehandy0.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
-            
-            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
-            
-            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
-            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
-            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
-            
-            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
-            
-        </div>
-        <audio id="audio" src="/imgs/oni.mp3"></audio>
-    </div>
-</div>
-    
     <header class="navbar navbar-inverse" id="gal-header">
     <div class="container">
         <div class="navbar-header">
@@ -217,6 +199,7 @@
 <p>有一组首选的基本目录相对于哪些配置文件应该被搜索。这组目录由环境变量定义$XDG_CONFIG_DIRS。</p>
 <p>有一个单独的基本目录，用户特定的非必要（缓存）数据应该写入其中。该目录由环境变量定义$XDG_CACHE_HOME。</p>
 <p>有一个单独的基本目录，用户特定的运行时文件和其他文件对象应放置在该目录中。该目录由环境变量定义$XDG_RUNTIME_DIR。</p>
+<p>laravel中xdg的实现代码,（env文件可以定义路径）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">class Xdg</span><br><span class="line">&#123;</span><br><span class="line">    const S_IFDIR = 040000; // directory</span><br><span class="line">    const S_IRWXO = 00007;  // rwx other</span><br><span class="line">    const S_IRWXG = 00056;  // rwx group</span><br><span class="line">    const RUNTIME_DIR_FALLBACK = &apos;php-xdg-runtime-dir-fallback-&apos;;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    public function getHomeDir()</span><br><span class="line">    &#123;</span><br><span class="line">        return getenv(&apos;HOME&apos;) ?: (getenv(&apos;HOMEDRIVE&apos;) . DIRECTORY_SEPARATOR . getenv(&apos;HOMEPATH&apos;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    public function getHomeConfigDir()</span><br><span class="line">    &#123;</span><br><span class="line">        $path = getenv(&apos;XDG_CONFIG_HOME&apos;) ?: $this-&gt;getHomeDir() . DIRECTORY_SEPARATOR . &apos;.config&apos;;</span><br><span class="line"></span><br><span class="line">        return $path;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    public function getHomeDataDir()</span><br><span class="line">    &#123;</span><br><span class="line">        $path = getenv(&apos;XDG_DATA_HOME&apos;) ?: $this-&gt;getHomeDir() . DIRECTORY_SEPARATOR . &apos;.local&apos; . DIRECTORY_SEPARATOR . &apos;share&apos;;</span><br><span class="line"></span><br><span class="line">        return $path;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return array</span><br><span class="line">     */</span><br><span class="line">    public function getConfigDirs()</span><br><span class="line">    &#123;</span><br><span class="line">        $configDirs = getenv(&apos;XDG_CONFIG_DIRS&apos;) ? explode(&apos;:&apos;, getenv(&apos;XDG_CONFIG_DIRS&apos;)) : array(&apos;/etc/xdg&apos;);</span><br><span class="line"></span><br><span class="line">        $paths = array_merge(array($this-&gt;getHomeConfigDir()), $configDirs);</span><br><span class="line"></span><br><span class="line">        return $paths;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return array</span><br><span class="line">     */</span><br><span class="line">    public function getDataDirs()</span><br><span class="line">    &#123;</span><br><span class="line">        $dataDirs = getenv(&apos;XDG_DATA_DIRS&apos;) ? explode(&apos;:&apos;, getenv(&apos;XDG_DATA_DIRS&apos;)) : array(&apos;/usr/local/share&apos;, &apos;/usr/share&apos;);</span><br><span class="line"></span><br><span class="line">        $paths = array_merge(array($this-&gt;getHomeDataDir()), $dataDirs);</span><br><span class="line"></span><br><span class="line">        return $paths;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    public function getHomeCacheDir()</span><br><span class="line">    &#123;</span><br><span class="line">        $path = getenv(&apos;XDG_CACHE_HOME&apos;) ?: $this-&gt;getHomeDir() . DIRECTORY_SEPARATOR . &apos;.cache&apos;;</span><br><span class="line"></span><br><span class="line">        return $path;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getRuntimeDir($strict=true)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($runtimeDir = getenv(&apos;XDG_RUNTIME_DIR&apos;)) &#123;</span><br><span class="line">            return $runtimeDir;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($strict) &#123;</span><br><span class="line">            throw new \RuntimeException(&apos;XDG_RUNTIME_DIR was not set&apos;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $fallback = sys_get_temp_dir() . DIRECTORY_SEPARATOR . self::RUNTIME_DIR_FALLBACK . getenv(&apos;USER&apos;);</span><br><span class="line"></span><br><span class="line">        $create = false;</span><br><span class="line"></span><br><span class="line">        if (!is_dir($fallback)) &#123;</span><br><span class="line">            mkdir($fallback, 0700, true);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $st = lstat($fallback);</span><br><span class="line"></span><br><span class="line">        # The fallback must be a directory</span><br><span class="line">        if (!$st[&apos;mode&apos;] &amp; self::S_IFDIR) &#123;</span><br><span class="line">            rmdir($fallback);</span><br><span class="line">            $create = true;</span><br><span class="line">        &#125; elseif ($st[&apos;uid&apos;] != getmyuid() ||</span><br><span class="line">            $st[&apos;mode&apos;] &amp; (self::S_IRWXG | self::S_IRWXO)</span><br><span class="line">        ) &#123;</span><br><span class="line">            rmdir($fallback);</span><br><span class="line">            $create = true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($create) &#123;</span><br><span class="line">            mkdir($fallback, 0700, true);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return $fallback;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>参考 <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html" target="_blank" rel="noopener">https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html</a></p>
 
     </div>
@@ -280,6 +263,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2018/04/10/mysql主从复制注意点/">mysql主从复制注意点</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
                 </span>
             </li>
@@ -304,13 +293,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
+                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
                 </span>
             </li>
             
@@ -332,12 +321,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2016/09/10/js常用函数的封装/">js常用函数的封装</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -356,12 +339,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
                 </span>
             </li>
@@ -374,13 +351,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2015/11/09/jdk高版本不能覆盖低版本怎么办/">jdk高版本不能覆盖低版本怎么办</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                    <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/12/05/js中的length/">js中的length</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
                 </span>
             </li>
             
@@ -399,18 +394,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2016/10/09/js简易实现private,public,static和继承/">js简易实现private,public,static和继承</a>
                 </span>
             </li>
             
@@ -435,25 +418,27 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/XDG/" style="font-size: 8.42219320868962px;" class="tag-cloud-link">XDG</a>
+    <a href="/tags/php/" style="font-size: 13.881622928909422px;" class="tag-cloud-link">php</a>
     
-    <a href="/tags/php/" style="font-size: 16.421048170769996px;" class="tag-cloud-link">php</a>
+    <a href="/tags/autohotkey/" style="font-size: 9.473477360006013px;" class="tag-cloud-link">autohotkey</a>
     
-    <a href="/tags/autohotkey/" style="font-size: 12.495949181365964px;" class="tag-cloud-link">autohotkey</a>
+    <a href="/tags/hexo/" style="font-size: 14.901645367909303px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/backbone/" style="font-size: 9.04610063510419px;" class="tag-cloud-link">backbone</a>
+    <a href="/tags/java/" style="font-size: 8.841773550506002px;" class="tag-cloud-link">java</a>
     
-    <a href="/tags/java/" style="font-size: 18.754891478718392px;" class="tag-cloud-link">java</a>
+    <a href="/tags/backbone/" style="font-size: 12.902888119031209px;" class="tag-cloud-link">backbone</a>
     
-    <a href="/tags/hexo/" style="font-size: 15.056123428413107px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/XDG/" style="font-size: 12.031227116752031px;" class="tag-cloud-link">XDG</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 16.964091245491137px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/mysql/" style="font-size: 15.115147396183481px;" class="tag-cloud-link">mysql</a>
     
-    <a href="/tags/git/" style="font-size: 18.937189723626297px;" class="tag-cloud-link">git</a>
+    <a href="/tags/ffmpeg/" style="font-size: 11.387061940656704px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/公众号/" style="font-size: 19.018496404951836px;" class="tag-cloud-link">公众号</a>
+    <a href="/tags/git/" style="font-size: 11.398696912926681px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/bat/" style="font-size: 14.353666104592744px;" class="tag-cloud-link">bat</a>
+    <a href="/tags/bat/" style="font-size: 17.508580839442164px;" class="tag-cloud-link">bat</a>
+    
+    <a href="/tags/公众号/" style="font-size: 9.386894950512033px;" class="tag-cloud-link">公众号</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
@@ -538,8 +523,6 @@
 </script>
 <script src="/js/hs.js"></script>
 <script src="/js/blog.js"></script>
-
-<script src="/js/oni.js"></script>
 
 
 
