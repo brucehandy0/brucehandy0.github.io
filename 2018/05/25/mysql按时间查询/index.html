@@ -12,7 +12,7 @@
     
     
     
-    <title>微信公众号发送模版消息,错误40001 | brucehandy</title>
+    <title>mysql按时间查询 | brucehandy</title>
     <link href=”https://brucehandy0.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -142,13 +142,13 @@
         <i class="fa fa-home"></i>
         <a href="https://brucehandy0.github.io">brucehandy</a>
         >
-        <span>微信公众号发送模版消息,错误40001</span>
+        <span>mysql按时间查询</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
+                <a href="/2018/05/25/mysql按时间查询/">mysql按时间查询</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -156,12 +156,12 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/公众号/">公众号</a>
+                <a href="/tags/mysql/">mysql</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2017-11-29
+                <i class="fa fa-calendar"></i> 2018-05-25
             </span>
             
         </div>
@@ -171,17 +171,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
+                    <a href="/2018/05/25/mysql按时间查询/">mysql按时间查询</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2017-11-29
+                <i class="fa fa-calendar"></i> 2018-05-25
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/公众号/">公众号</a>
+                <a href="/tags/mysql/">mysql</a>
                 
                 
                 
@@ -189,9 +189,28 @@
         </center>
     </div>
     <div class="content-article">
-        <p>微信如果手动设置token,token就是固定的，但是很多时候会出意外</p>
-<p>比如当微信发送模版消息，会报40001错误，就是token验证不一致，所以非必要情况不建议用手动指定token</p>
-<p>微信模版消息中的url参数，不一定非要填‘<a href="http://weixin.qq.com/download’，" target="_blank" rel="noopener">http://weixin.qq.com/download’，</a> 这个url是指用户点击模版消息时 跳转的地址url</p>
+        <ol>
+<li>mysql mysqldump 只导出表结构 不导出数据:<br>mysqldump –opt -d 数据库名 -u root -p &gt; xxx.sql</li>
+</ol>
+<ol start="2">
+<li><p>导出数据不导出结构:<br>mysqldump　-t　数据库名　-uroot　-p　&gt;　xxx.sql　</p>
+</li>
+<li><p>导出数据和表结构:<br>mysqldump　数据库名　-uroot　-p　&gt;　xxx.sql　</p>
+</li>
+<li><p>导出特定表的结构:<br>mysqldump　-uroot　-p　-B　数据库名　–table　表名　&gt;　xxx.sql　　</p>
+</li>
+</ol>
+<p>1）创建个示例表register_order<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS `register_order`;</span><br><span class="line">/*!40101 SET @saved_cs_client     = @@character_set_client */;</span><br><span class="line">/*!40101 SET character_set_client = utf8 */;</span><br><span class="line">CREATE TABLE `register_order` (</span><br><span class="line">  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT &apos;主键&apos;,</span><br><span class="line">  `out_refund_no` char(18) NOT NULL COMMENT &apos;退款订单&apos;,</span><br><span class="line">  `out_trade_no` char(18) NOT NULL COMMENT &apos;订单号&apos;,</span><br><span class="line">  `total` decimal(10,2) NOT NULL COMMENT &apos;订单金额&apos;,</span><br><span class="line">  `return_total` decimal(10,2) NOT NULL COMMENT &apos;退款金额&apos;,</span><br><span class="line">  `return_desc` text COMMENT &apos;退款描述&apos;,</span><br><span class="line">  `pay_type` varchar(3) NOT NULL COMMENT &apos;支付方式：ali，wc&apos;,</span><br><span class="line">  `status` tinyint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;退款状态: 0未成功，1成功&apos;,</span><br><span class="line">  `created_at` int(10) NOT NULL COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `updated_at` int(10) NOT NULL COMMENT &apos;更新时间&apos;,DROP TABLE IF EXISTS `register_order`;</span><br><span class="line">/*!40101 SET @saved_cs_client     = @@character_set_client */;</span><br><span class="line">/*!40101 SET character_set_client = utf8 */;</span><br><span class="line">CREATE TABLE `register_order` (</span><br><span class="line">  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT &apos;主键&apos;,</span><br><span class="line">  `out_refund_no` char(18) NOT NULL COMMENT &apos;退款订单&apos;,</span><br><span class="line">  `out_trade_no` char(18) NOT NULL COMMENT &apos;订单号&apos;,</span><br><span class="line">  `total` decimal(10,2) NOT NULL COMMENT &apos;订单金额&apos;,</span><br><span class="line">  `return_total` decimal(10,2) NOT NULL COMMENT &apos;退款金额&apos;,</span><br><span class="line">  `return_desc` text COMMENT &apos;退款描述&apos;,</span><br><span class="line">  `pay_type` varchar(3) NOT NULL COMMENT &apos;支付方式：ali，wc&apos;,</span><br><span class="line">  `status` tinyint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;退款状态: 0未成功，1成功&apos;,</span><br><span class="line">  `created_at` int(10) NOT NULL COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `updated_at` int(10) NOT NULL COMMENT &apos;更新时间&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure></p>
+<p>2）添加一些数据</p>
+<p>3）按时间分类，%d是按天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sql = &apos;SELECT DATE_FORMAT(from_unixtime(created_at), &quot;%Y-%m-%d&quot;) as d,sum(return_total) as t</span><br><span class="line">FROM register_order</span><br><span class="line">GROUP BY d&apos;;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="http://p6ackvk9k.bkt.clouddn.com/groupbyday1.png" alt="result"></p>
+<p>这个结果不是每天都有，不是我想要的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$sql=&apos;select DATE_FORMAT( ADDDATE(</span><br><span class="line">&quot;2018-03-01&quot;,INTERVAL @d DAY), &quot;%Y-%m-%d&quot;) as date,@d :=@d + 1 day from register_order,(SELECT @d := 0) temp</span><br><span class="line">WHERE ADDDATE(&quot;2018-03-01&quot;,INTERVAL @d DAY) &lt; DATE_FORMAT(&quot;2018-04-01&quot;, &quot;%Y-%m-%d&quot;)</span><br><span class="line">GROUP BY</span><br><span class="line">date&apos;;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="http://p6ackvk9k.bkt.clouddn.com/groupbyday2.png" alt="result"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$sql = &apos;SELECT A.date ,B.t</span><br><span class="line">FROM (  </span><br><span class="line">SELECT DATE_FORMAT(ADDDATE(&quot;&apos;.$BeginDate.&apos;&quot;, INTERVAL @d DAY),</span><br><span class="line">&quot;%Y-%m-%d&quot;) AS date ,@d :=@d + 1 DAY  </span><br><span class="line">FROM register_order ,(SELECT @d := 0) temp</span><br><span class="line">WHERE ADDDATE(&quot;&apos;.$BeginDate.&apos;&quot;,INTERVAL @d DAY) &lt; DATE_FORMAT(&quot;&apos;.$endDate.&apos;&quot;, &quot;%Y-%m-%d&quot;)</span><br><span class="line">)  A</span><br><span class="line">LEFT JOIN (</span><br><span class="line">SELECT DATE_FORMAT(from_unixtime(created_at), &quot;%Y-%m-%d&quot;)  as d,</span><br><span class="line">ifnull(sum(return_total),0) as t</span><br><span class="line">FROM register_order</span><br><span class="line">GROUP BY d</span><br><span class="line">) B</span><br><span class="line">ON A.date = B.d&apos;;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="http://p6ackvk9k.bkt.clouddn.com/groupbyday3.png" alt="result"></p>
+<p>这样终于ok了</p>
 
     </div>
 </article>
@@ -330,13 +349,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/10/27/autohotkey 改建/">autohotkey 改建</a>
+                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
+                    <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
                 </span>
             </li>
             
@@ -348,7 +367,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/12/05/js中的length/">js中的length</a>
+                    <a href="/2017/03/14/hexo修改默认端口/">hexo修改默认端口</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/06/12/git常用命令/">hexo修改默认端口</a>
                 </span>
             </li>
             
@@ -360,13 +385,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/09/10/js常用函数的封装/">js常用函数的封装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/04/10/mysql主从复制注意点/">mysql主从复制注意点</a>
+                    <a href="/2018/05/25/mysql按时间查询/">mysql按时间查询</a>
                 </span>
             </li>
             
@@ -397,41 +416,41 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/05/25/mysql按时间查询/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/05/25/mysql按时间查询/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/05/25/mysql按时间查询/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/autohotkey/" style="font-size: 18.7434329243448px;" class="tag-cloud-link">autohotkey</a>
+    <a href="/tags/autohotkey/" style="font-size: 13.051121140377369px;" class="tag-cloud-link">autohotkey</a>
     
-    <a href="/tags/php/" style="font-size: 10.90307203652561px;" class="tag-cloud-link">php</a>
+    <a href="/tags/php/" style="font-size: 14.072738060745019px;" class="tag-cloud-link">php</a>
     
-    <a href="/tags/ffmpeg/" style="font-size: 12.690579850509433px;" class="tag-cloud-link">ffmpeg</a>
+    <a href="/tags/ffmpeg/" style="font-size: 9.620965470517277px;" class="tag-cloud-link">ffmpeg</a>
     
-    <a href="/tags/XDG/" style="font-size: 16.787738762387498px;" class="tag-cloud-link">XDG</a>
+    <a href="/tags/XDG/" style="font-size: 12.947163197804539px;" class="tag-cloud-link">XDG</a>
     
-    <a href="/tags/backbone/" style="font-size: 9.67312015767526px;" class="tag-cloud-link">backbone</a>
+    <a href="/tags/backbone/" style="font-size: 9.9155133529865px;" class="tag-cloud-link">backbone</a>
     
-    <a href="/tags/hexo/" style="font-size: 15.809262610646929px;" class="tag-cloud-link">hexo</a>
+    <a href="/tags/hexo/" style="font-size: 11.112471847387617px;" class="tag-cloud-link">hexo</a>
     
-    <a href="/tags/git/" style="font-size: 14.449228038109624px;" class="tag-cloud-link">git</a>
+    <a href="/tags/git/" style="font-size: 11.53865380602561px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/java/" style="font-size: 15.342757710399304px;" class="tag-cloud-link">java</a>
+    <a href="/tags/java/" style="font-size: 16.903166792631666px;" class="tag-cloud-link">java</a>
     
-    <a href="/tags/mysql/" style="font-size: 15.703187939445666px;" class="tag-cloud-link">mysql</a>
+    <a href="/tags/mysql/" style="font-size: 19.141497823317152px;" class="tag-cloud-link">mysql</a>
     
-    <a href="/tags/elasticsearch/" style="font-size: 14.593884938557014px;" class="tag-cloud-link">elasticsearch</a>
+    <a href="/tags/elasticsearch/" style="font-size: 18.95017946363851px;" class="tag-cloud-link">elasticsearch</a>
     
-    <a href="/tags/公众号/" style="font-size: 9.177932056261518px;" class="tag-cloud-link">公众号</a>
+    <a href="/tags/公众号/" style="font-size: 11.550559245449726px;" class="tag-cloud-link">公众号</a>
     
-    <a href="/tags/bat/" style="font-size: 17.30429877975951px;" class="tag-cloud-link">bat</a>
+    <a href="/tags/bat/" style="font-size: 10.774271174217091px;" class="tag-cloud-link">bat</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
