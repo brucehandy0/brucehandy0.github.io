@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="brucehandy">
+    
+    <meta name="description" content="brucehandy">
+    
+    
+    
+    
+    
+    
+    <title>正则知识整理 | brucehandy</title>
+    <link href=”https://brucehandy0.github.io“ rel=”prefetch” />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg,preview5.jpg,preview6.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://brucehandy0.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">brucehandy</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/tags">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://brucehandy0.github.io">brucehandy</a>
+        >
+        <span>正则知识整理</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2017/08/12/正则/">正则知识整理</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2017-08-12
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2017/08/12/正则/">正则知识整理</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2017-08-12
+            </p>
+            <p>
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>整理了一些关于正则的知识，不是原创</p>
+<p>基础</p>
+<p>字符组[]</p>
+<p>正则表达式[\w]+,\w+,[\w+] 三者有何区别：<br>[\w]+和\w+没有区别，都是匹配数字和字母下划线的多个字符；<br>[\w+]表示匹配数字、字母、下划线和加号本身字符；</p>
+<p>^<br>[^]</p>
+<p>|<br>[|] [|]</p>
+<p>中文<br>[\u4e00-\u9fa5]</p>
+<p>转义符 \</p>
+<p>元字符（Metacharacter）是拥有特殊含义的字符：</p>
+<p>元字符 描述<br>.   查找单个字符，除了换行和行结束符。<br>w   查找单词字符。<br>W   查找非单词字符。<br>d   查找数字。<br>D   查找非数字字符。<br>s   查找空白字符。<br>S   查找非空白字符。<br>b   查找位于单词的开头或结尾的匹配。<br>B   查找不处在单词的开头或结尾的匹配。<br>查找 NUL 字符。<br>n   查找换行符。<br>f   查找换页符。<br>r   查找回车符。<br>t   查找制表符。<br>v   查找垂直制表符。<br>xxx 查找以八进制数 xxx 规定的字符。<br>xdd 查找以十六进制数 dd 规定的字符。<br>uxxxx   查找以十六进制数 xxxx 规定的 Unicode 字符。</p>
+<p>\d     代表[0-9]     \D    代表[^0-9]<br>\w     代表[0-9a-zA-Z_]      \W     代表[^0-9a-zA-Z_]<br>\s     代表空白符     \S     代表非空白符<br>\n      换行    \t     制表符（Tab键）<br>\f      换页符    \v     垂直制表符<br>[\b]    退格         注意： \b是匹配匹配一个词语的边界</p>
+<p>量词<br>①  {n,m}    最小值—最大值<br>②  {n,}    至少n次或者更多次<br>③  {n}    匹配恰好n次</p>
+<p>//贪婪模式<br>④  ?    匹配等价于{0,1}<br>⑤  +    &gt;=1  等价于{1,}<br>⑥  <em>    &gt;=0  等价于{0,}<br>//非贪婪<br>+?
+</em>?</p>
+<p>表达式修饰符</p>
+<p>i 不区分(ignore)大小写；<br>例如: /abc/i 可以匹配 abc、aBC、Abc </p>
+<p>g 全局(global)匹配<br>如果不带g，正则过程中字符串从左到右匹配，找到第一个符合条件的即匹配成功，返回<br>如果带g，则字符串从左到右，找到每个符合条件的都记录下来，知道字符串结尾位置</p>
+<p>可以得到很多结果<br>例如:<br>var str = ‘aaaaaaaa’<br>var reg1 = /a/;  str.match(reg1)  // 结果为：[“a”, index: 0, input: “aaaaaaaa”]<br>var reg2 = /a/g; str.match(reg2)  // 结果为：[“a”, “a”, “a”, “a”, “a”, “a”, “a”, “a”]</p>
+<p>/m (多行查找) 多行模式<br>/s 单行模式<br>单行模式中;$表示段尾 ,^表示段首</p>
+<p>多行模式中:$表示行尾(\n),^表示每行首</p>
+<p>NFA 是 表达式主导引擎，   NFA又基本上可以分为传统型NFA和POSIX NFA<br>DFA 则是 文本主导引擎</p>
+<p>DFA Deterministic finite automaton 确定型有穷自动机</p>
+<p>NFA Non-deterministic finite automaton　非确定型有穷自动机</p>
+<p>DFA引擎因为不需要回溯，所以匹配快速，但不支持捕获组，所以也就不支持反向引用和$number这种引用方式，目前使用DFA引擎的语言和工具主要有awk、egrep 和 lex。</p>
+<p>POSIX NFA主要指符合POSIX标准的NFA引擎，它的特点主要是提供longest-leftmost匹配，也就是在找到最左侧最长匹配之前，它将继续回溯。同DFA一样，非贪婪模式或者说忽略优先量词对于POSIX NFA同样是没有意义的。</p>
+<p>大多数语言和工具使用的是传统型的NFA引擎<br>js是传统型NFA</p>
+<p>支持<br>()<br>\1 \2<br>$1 $2<br>(?:)非捕获<br>1.捕获组、反向引用和$number引用方式；</p>
+<p>2.环视(Lookaround，(?&lt;=…)、(?&lt;!…)、(?=…)、(?!…))，或者有的有文章叫做预搜索；<br>前瞻 (?=) 也叫正向零宽先行断言   后面有这个<br>反向前瞻(?!=) 也叫负向零宽先行断言  后面没有这个 </p>
+<p>后顾(?&lt;=)   正向零宽后行断言   前面有<br>反向后顾(?&lt;！)   前面没有<br>（js不支持后顾）</p>
+<p>3.忽略优化量词（??、*?、+?、{m,n}?、{m,}?），或者有的文章叫做非贪婪模式；    匹配优先 忽略优先（贪婪，非贪婪）</p>
+<p>4.占有优先量词（?+、*+、++、{m,n}+、{m,}+，目前仅Java和PCRE支持），固化分组(?&gt;…)。</p>
+<p>有些流派并不支持占有优先量词和固化分组，比如JavaScript，这是我们就可以用肯定环视来模拟固化分组：??</p>
+<p>(?&gt;…) 固化分组(成功匹配后，回簌时不会考虑这个匹配的字符)   效率高</p>
+<p>占有字符和零宽度<br>正则表达式匹配过程中，如果子表达式匹配到的是字符内容，而非位置，并被保存到最终的匹配结果中，那么就认为这个子表达式是占有字符的；</p>
+<p>如果子表达式匹配的仅仅是位置，或者匹配的内容并不保存到最终的匹配结果中，那么就认为这个子表达式是零宽度的</p>
+<p>占有字符是互斥的，<br>零宽度是非互斥的。</p>
+<p>也就是一个字符，同一时间只能由一个子表达式匹配，<br>而一个位置，却可以同时由多个零宽度的子表达式匹配。</p>
+<p>正则的匹配过程，通常情况下都是由一个子表达式（可能为一个普通字符、元字符或元字符序列组成）取得控制权，从字符串的某一位置开始尝试匹配，一个子表达式开始尝试匹配的位置，是从前一子表达匹配成功的结束位置开始的。如正则表达式：</p>
+<p>(子表达式一)(子表达式二)</p>
+<p>假设(子表达式一)为零宽度表达式，由于它匹配开始和结束的位置是同一个，如位置0，那么(子表达式二)是从位置0开始尝试匹配的。</p>
+<p>假设(子表达式一)为占有字符的表达式，由于它匹配开始和结束的位置不是同一个，如匹配成功开始于位置0，结束于位置2，那么(子表达式二)是从位置2开始尝试匹配的。</p>
+<p>javascript只支持零宽先行断言，而零宽先行断言又可以分为正向零宽先行断言，和负向零宽先行断言。<br>代码实例如下:<br>实例代码一:<br>var str=”abZW863”;<br>var reg=/ab(?=[A-Z])/;<br>console.log(str.match(reg));<br>在以上代码中，正则表达式的语义是:匹配后面跟随任意一个大写字母的字符串”ab”。<br>最终匹配结果是”ab”，</p>
+<p>因为零宽断言”(?=[A-Z])”并不匹配任何字符，只是用来规定当前位置的后面必须是一个大写字母。</p>
+<p>实例代码二<br>var str=”Iraq”;<br>var str=”qoph”;</p>
+<p>var regex=/q[^u]/</p>
+<p>这里 Irap 不能匹配成功，[^u]需要一个字符，一个不是u的字符，</p>
+<ol>
+<li>源字符串：abc</li>
+</ol>
+<p>正则表达式：abc</p>
+<p>匹配过程：</p>
+<p>首先由字符“a”取得控制权，从位置0开始匹配，由“a”来匹配“a”，匹配成功，控制权交给字符“b”；由于“a”已被“a”匹配，所以“b”从位置1开始尝试匹配，由“b”来匹配“b”，匹配成功，控制权交给“c”；由“c”来匹配“c”，匹配成功。</p>
+<p>此时正则表达式匹配完成，报告匹配成功。匹配结果为“abc”，开始位置为0，结束位置为3。</p>
+<ol start="5">
+<li>源字符串：a12</li>
+</ol>
+<p>正则表达式：^(?=[a-z])[a-z0-9]+$</p>
+<p>元字符“^”和“$”匹配的只是位置，顺序环视“(?=[a-z])”只进行匹配，并不占有字符，也不将匹配的内容保存到最终的匹配结果，所以都是零宽度的。</p>
+<p>这个正则的意义就是匹配由字母和数字组成的，第一个字符是字母的字符串。</p>
+<p>匹配过程：</p>
+<p>首先由元字符“^”取得控制权，从位置0开始匹配，“^”匹配的就是开始位置“位置0”，匹配成功，控制权交给顺序环视“(?=[a-z])”；</p>
+<p>“(?=[a-z])”要求它所在位置右侧必须是字母才能匹配成功，零宽度的子表达式之间是不互斥的，即同一个位置可以同时由多个零宽度子表达式匹配，所以它也是从位置0尝试进行匹配，位置0的右侧是字符“a”，符合要求，匹配成功，控制权交给“[a-z0-9]+”；</p>
+<p>因为“(?=[a-z])”只进行匹配，并不将匹配到的内容保存到最后结果，并且“(?=[a-z])”匹配成功的位置是位置0，所以“[a-z0-9]+”也是从位置0开始尝试匹配的，“[a-z0-9]+”首先尝试匹配“a”，匹配成功，继续尝试匹配，可以成功匹配接下来的“1”和“2”，此时已经匹配到位置3，位置3的右侧已没有字符，这时会把控制权交给“$”；</p>
+<p>元字符“$”从位置3开始尝试匹配，它匹配的是结束位置，也就是“位置3”，匹配成功。</p>
+<p>此时正则表达式匹配完成，报告匹配成功。匹配结果为“a12”，开始位置为0，结束位置为3。其中“^”匹配位置0，“(?=[a-z])”匹配位置0，“[a-z0-9]+”匹配字符串“a12”，“$”匹配位置3。</p>
+<p>校验：</p>
+<ol>
+<li>汉字之间不允许有空格；英文名字母中间只允许有1个空格；汉字与符号之间，字母与符号之间不允许有空格。</li>
+<li>“•”或“_”或“-”只能出现在两个汉字或两个字母之间，两个汉字或两个字母之间只允许有1个符号。</li>
+<li>仅可以为汉字、字母以及汉字与符号的组合、字母与符号的组合，符号仅允许下列符号“•”（ GB13000编码为00B7，GB18030编码为A1A4）或“<em>” 或“-”或空格(“</em>” 或“-”或空格仅允许半角模式)。</li>
+<li>必须大于等于2个字符,小于等于50个字符 （一个字符就是一个字、字母）</li>
+</ol>
+<pre><code> var userName_regex = /^((([\u4E00-\u9FA5\uf900-\ufa2d])([\u4E00-\u9FA5\uf900-\ufa2d]|_(?!_|-|·)|-(?!_|-|·)|·(?!_|-|·)){0,48}([\u4E00-\u9FA5\uf900-\ufa2d])$)|(([a-zA-Z])([a-zA-Z]|\s(?!_|-|·|\s)|_(?!_|-|·|\s)|-(?!_|-|·|\s)|·(?!_|-|·|\s)){0,48})([a-zA-Z])$)$/;
+
+var userName_regex = 
+/^((([\u4E00-\u9FA5\uf900-\ufa2d])
+
+([\u4E00-\u9FA5\uf900-\ufa2d]         |         _(?!_|-|·)|-(?!_|-|·)|·(?!_|-|·)){0,48}         ([\u4E00-\u9FA5\uf900-\ufa2d])       $)      |
+
+
+(([a-zA-Z])([a-zA-Z]|\s(?!_|-|·|\s)|_(?!_|-|·|\s)|-(?!_|-|·|\s)|·(?!_|-|·|\s)){0,48})([a-zA-Z])$)$/
+
+;
+</code></pre><p>var s = ‘by Jeffrey Friedl’<br>var s = ‘by Thomas Jefferson’<br>var r=/(?=Jeffrey)Jeff/</p>
+<p>var s=’123456789’;<br>任务 改造成’123,456,789’</p>
+<p>var r=/(?&lt;=\d&gt;)(?=\d\d\d)/,/g</p>
+<pre><code>||||| 效率很低 
+</code></pre><p>什么是贪婪与非贪婪模式 </p>
+<ol start="2">
+<li>源字符串：abc</li>
+</ol>
+<p>正则表达式：ab?c</p>
+<p>匹配优先<br>忽略优先</p>
+<p>量词“?”属于匹配优先量词，在可匹配可不匹配时，会先选择尝试匹配，只有这种选择会使整个表达式无法匹配成功时，才会尝试让出匹配到的内容。这里的量词“?”是用来修饰字符“b”的，所以“b?”是一个整体。</p>
+<p>匹配过程：</p>
+<p>首先由字符“a”取得控制权，从位置0开始匹配，由“a”来匹配“a”，匹配成功，控制权交给字符“b?”；由于“?”是匹配优先量词，所以会先尝试进行匹配，由“b?”来匹配“b”，匹配成功，控制权交给“c”，同时记录一个备选状态；由“c”来匹配“c”，匹配成功。记录的备选状态丢弃。</p>
+<p>此时正则表达式匹配完成，报告匹配成功。匹配结果为“abc”，开始位置为0，结束位置为3。</p>
+<ol start="3">
+<li>源字符串：ac</li>
+</ol>
+<p>正则表达式：ab?c</p>
+<p>匹配过程：</p>
+<p>首先由字符“a”取得控制权，从位置0开始匹配，由“a”来匹配“a”，匹配成功，控制权交给字符“b?”；先尝试进行匹配，由“b?”来匹配“c”，同时记录一个备选状态，匹配失败，此时进行回溯，找到备选状态，“b?”忽略匹配，让出控制权，把控制权交给“c”；由“c”来匹配“c”，匹配成功。</p>
+<ol start="4">
+<li>源字符串：abc<br>正则表达式：ab??c</li>
+</ol>
+<p>量词“??”属于忽略优先量词，在可匹配可不匹配时，会先选择不匹配，只有这种选择会使整个表达式无法匹配成功时，才会尝试进行匹配。这里的量词“??”是用来修饰字符“b”的，所以“b??”是一个整体。</p>
+<p>匹配过程：</p>
+<p>首先由字符“a”取得控制权，从位置0开始匹配，由“a”来匹配“a”，匹配成功，控制权交给字符“b??”；先尝试忽略匹配，即“b??”不进行匹配，同时记录一个备选状态，控制权交给“c”；由“c”来匹配“b”，匹配失败，此时进行回溯，找到记录的备选状态，“b??”尝试匹配，即“b??”来匹配“b”，匹配成功，把控制权交给“c”；由“c”来匹配“c”，匹配成功。</p>
+<p>此时正则表达式匹配完成，报告匹配成功。匹配结果为“abc”，开始位置为0，结束位置为3。其中“b??”匹配字符“b”。</p>
+<p>先看一个例子 </p>
+<p>举例： </p>
+<p>源字符串：aa<div>test1</div>bb<div>test2</div>cc </p>
+<p>正则表达式一：<div>.*</div> </p>
+<p>匹配结果一：<div>test1</div>bb<div>test2</div> </p>
+<p>正则表达式二：<div>.*?</div> </p>
+<p>匹配结果二：<div>test1</div>（这里指的是一次匹配结果，所以没包括<div>test2</div>） </p>
+<p>在“整个表达式匹配成功”的前提下，贪婪模式才真正的影响着子表达式的匹配行为，如果整个表达式匹配失败，贪婪模式只会影响匹配过程，对匹配结果的影响无从谈起。</p>
+<p>源字符串：”Regex” </p>
+<p>正则表达式：”.<em>“<br>贪婪<br>来看一下匹配过程。首先由第一个“””取得控制权，匹配位置0位的“””，匹配成功，控制权交给“.</em>”。 </p>
+<p>“.<em>”取得控制权后，由于“</em>”是匹配优先量词，在可匹配可不匹配的情况下，优先尝试匹配。从位置1处的“R”开始尝试匹配，匹配成功，继续向右匹配，匹配位置2处的“e”，匹配成功，继续向右匹配，直到匹配到结尾的“””，匹配成功，由于此时已匹配到字符串的结尾，所以“.*”结束匹配，将控制权交给正则表达式最后的“””。 </p>
+<p>“””取得控制权后，由于已经在字符串结束位置，匹配失败，向前查找可供回溯的状态，控制权交给“.<em>”，由“.</em>”让出一个字符，也就是字符串结尾处的“””，再把控制权交给正则表达式最后的“””，由“””匹配字符串结尾处的“””，匹配成功。 </p>
+<p>此时整个正则表达式匹配成功，其中“.*”匹配的内容为“Regex”，匹配过程中进行了一次回溯。</p>
+<p>正则表达式：”.*?” </p>
+<p>“.<em>?”取得控制权后，由于“</em>?”是忽略优先量词，在可匹配可不匹配的情况下，优先尝试不匹配，由于“*”等价于“{0,}”，所以在忽略优先的情况下，可以不匹配任何内容。从位置1处尝试忽略匹配，也就是不匹配任何内容，将控制权交给正则表达式最后的“””。 </p>
+<p>“””取得控制权后，从位置1处尝试匹配，由“””匹配位置1处的“R”，匹配失败，向前查找可供回溯的状态，控制权交给“.<em>?”，由“.</em>?”吃进一个字符，匹配位置1处的“R”，再把控制权交给正则表达式最后的“””。 </p>
+<p>“””取得控制权后，从位置2处尝试匹配，由“””匹配位置1处的“e”，匹配失败，向前查找可供回溯的状态，重复以上过程，直到由“.*?”匹配到“x”为止，再把控制权交给正则表达式最后的“””。 </p>
+<p>“””取得控制权后，从位置6处尝试匹配，由“””匹配字符串最后的“””，匹配成功。 </p>
+<p>此时整个正则表达式匹配成功，其中“.*?”匹配的内容为“Regex”，匹配过程中进行了五次回溯。 </p>
+<p>贪婪模式还有一点优势，就是在匹配失败时，贪婪模式可以更快速的报告失败，从而提升匹配效率</p>
+<p>总结</p>
+<p>能达到同样匹配结果的贪婪与非贪婪模式，通常是贪婪模式的匹配效率较高。 </p>
+<p>所有的非贪婪模式，都可以通过修改量词修饰的子表达式，转换为贪婪模式。 </p>
+<p>贪婪模式可以与固化分组结合，提升匹配效率，而非贪婪模式却不可以。</p>
+<p>固话分组<br>“(?&gt;[^”]*)” </p>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            brucehandy
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>brucehandy</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/20/书札/">书札</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/06/25/git分支命令简记/">git分支命令简记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/05/25/mysql按时间查询/">mysql按时间查询</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/05/18/window安装elasticsearch/">window安装elasticsearch</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/10/mysql主从复制注意点/">mysql主从复制注意点</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/29/微信公众号发送模版消息,错误40001/">微信公众号发送模版消息,错误40001</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/08/12/正则/">正则知识整理</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/05/29/CentOS 7 安装ffmpeg/">CentOS 7 安装ffmpeg</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/11/16/PHPMailer修改端口报错/">PHPMailer修改端口报错</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/06/12/git常用命令/">git常用命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/06/25/git分支命令简记/">git分支命令简记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/12/29/backbone入门学习/">backbone入门学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/14/js单例模式/">js单例模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/02/XDG standard/">XDG基本目录规范</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/11/09/jdk高版本不能覆盖低版本怎么办/">jdk高版本不能覆盖低版本怎么办</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/04/10/mysql主从复制注意点/">mysql主从复制注意点</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/09/04/win下开机启动软件/">win下开机启动软件</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/20/书札/">书札</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+                <li class="">
+                    <a href="/2017/08/12/正则/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                <li class="">
+                    <a href="/2017/08/12/正则/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                <li class="">
+                    <a href="/2017/08/12/正则/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/php/" style="font-size: 8.559208488352432px;" class="tag-cloud-link">php</a>
+    
+    <a href="/tags/ffmpeg/" style="font-size: 19.540989807851094px;" class="tag-cloud-link">ffmpeg</a>
+    
+    <a href="/tags/git/" style="font-size: 12.213716802582844px;" class="tag-cloud-link">git</a>
+    
+    <a href="/tags/hexo/" style="font-size: 15.826553913823826px;" class="tag-cloud-link">hexo</a>
+    
+    <a href="/tags/backbone/" style="font-size: 9.421084303403056px;" class="tag-cloud-link">backbone</a>
+    
+    <a href="/tags/autohotkey/" style="font-size: 8.118830511902814px;" class="tag-cloud-link">autohotkey</a>
+    
+    <a href="/tags/XDG/" style="font-size: 14.515548329046087px;" class="tag-cloud-link">XDG</a>
+    
+    <a href="/tags/java/" style="font-size: 18.840735830096715px;" class="tag-cloud-link">java</a>
+    
+    <a href="/tags/mysql/" style="font-size: 12.351073723148177px;" class="tag-cloud-link">mysql</a>
+    
+    <a href="/tags/bat/" style="font-size: 16.61548813350722px;" class="tag-cloud-link">bat</a>
+    
+    <a href="/tags/公众号/" style="font-size: 18.321066594537278px;" class="tag-cloud-link">公众号</a>
+    
+    <a href="/tags/elasticsearch/" style="font-size: 11.61056531916904px;" class="tag-cloud-link">elasticsearch</a>
+    
+</div>
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://ryerh.com/" target="_blank">ryerh</a>
+    </li>
+    
+</div>
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/brucehandy0" target="_blank">Github</a>
+    </li>
+    
+</div>
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 brucehandy Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
